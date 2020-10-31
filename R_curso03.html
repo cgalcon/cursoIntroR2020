@@ -18,7 +18,7 @@ class: center, middle, inverse, title-slide
 ## Bloque III:<br/>Estructuras de datos y operaciones. Funciones y métodos de R.
 ### Carlos González Alcón
 ### Departamento de Matemáticas, Estadística e IO – Universidad de La Laguna
-### 9 nov 2020
+### 9 nov 2020. v30oct
 
 ---
 
@@ -390,7 +390,7 @@ Otras funciones al aplicarse a un vector devuelven un solo valor o un vector de 
 
 3. Crea un vector de 100 elementos en el que las posiciones impares las ocupen los impares en orden creciente y las pares sean ceros: (1, 0, 3, 0, 5,..., 99, 0).
 
-[Ir a las soluciones](soluciones1.html)
+[Ir a las soluciones](soluciones.html)  
 
 
 ---
@@ -772,8 +772,7 @@ menores que --0.5 les cambie el signo.
 componentes en las que `x` es positivo y 'n' para
 aquellas en las que `x` es negativo.
 
-[Ir a las soluciones](soluciones2.html)
-
+[Ir a las soluciones](soluciones.html#segundo)
 
 
 ---
@@ -899,16 +898,16 @@ sus vectores argumentos como columnas o como filas de la matriz resultado:
 
 
 ---
-# Matrices: ejercicio 1
+# Matrices: ejercicio 3.1 (día 1)
 
 *Producción de fruta en Canarias.*
 Guardemos en una matriz la producción de nísperos, aguacates y kiwis entre 2014 y 2019. (Fuente: [ISTAC](http://www.gobiernodecanarias.org/istac/estadisticas/sectorprimario/))
 
-fruta  |2019      |	2018  |	2017   |	2016 |	2015  |	2014 
--------|------------------------------------------------- 
-Níspero | 	205,6 	|212,9 	|199,8 	 |197,4  |196,0 	|196,0 
-Aguacate| 	11.959,1|8.879,8|11.001,1|9.427,2|10.328,0|9.808,0 
-Kiwi 	 |  57,5 	  |55,3 	|52,3 	 |48,0 	 |46,0 	  |45,0 
+fruta   |2019      |	2018  |	2017   |	2016 |	2015 |2014 
+--------|------------------------------------------------- 
+Níspero | 	205,6  |212,9  |199,8   |197,4  |196,0 	 |196,0 
+Aguacate|11.959,1  |8.879,8|11.001,1|9.427,2|10.328,0|9.808,0 
+Kiwi 	  |  57,5 	 |55,3 	 |52,3    |48,0 	|46,0 	 |45,0 
 
 * Crear una matriz `frutas` cuyas columnas sean toneladas producidas de estas frutas
 para cada año de 2014 a 2019. ¡Atento al punto decimal!
@@ -930,81 +929,26 @@ para cada año de 2014 a 2019. ¡Atento al punto decimal!
 
 
 ---
-# Matrices: ejercicio 1
-
-
-```r
-&gt; nispe &lt;- c(205.6, 212.9, 199.8, 197.4, 196.0, 196.0)
-&gt; aguac &lt;- c(11959.1, 8879.8, 11001.1, 9427.2, 10328.0, 9808.0)
-&gt; kiwis &lt;- c(57.5, 55.3, 52.3, 48.0, 46.0, 45.0)
-&gt; frutas &lt;- rbind(nispe,aguac,kiwis); frutas
-```
-
-```
-##          [,1]   [,2]    [,3]   [,4]  [,5] [,6]
-## nispe   205.6  212.9   199.8  197.4   196  196
-## aguac 11959.1 8879.8 11001.1 9427.2 10328 9808
-## kiwis    57.5   55.3    52.3   48.0    46   45
-```
-Damos/cambiamos nombres a columnas y filas con `colnames()` y `rownames()`
-
-```r
-&gt; colnames(frutas) &lt;- c(2019:2014)
-&gt; rownames(frutas) &lt;- c("nispero", "aguacate", "kiwi")
-&gt; frutas
-```
-
-```
-##             2019   2018    2017   2016  2015 2014
-## nispero    205.6  212.9   199.8  197.4   196  196
-## aguacate 11959.1 8879.8 11001.1 9427.2 10328 9808
-## kiwi        57.5   55.3    52.3   48.0    46   45
-```
-
-
----
-# Matrices: ejercicio 2
-
-* Si el precio medio del kilo de níspero es 1.5€, el del aguacate es 1.2€ y el del
-kiwi es 1.3€, ¿a cuánto asciende el valor de la producción de cada año?
-* Multiplicación de matrices: `%*%`
-
-```r
-&gt; precio &lt;- c(1.5, 1.2, 1.3)
-```
-
----
-# Matrices: ejercicio 2
+# Matrices: ejercicio 3.2
 
 * Si el precio medio del kilo de níspero es 1.5€, el del aguacate es 1.2€ y el del
 kiwi es 1.3€, ¿a cuánto asciende el valor de la producción de cada año?
 
 ```r
 &gt; precio &lt;- c(1.5, 1.2, 1.3)
-&gt; precio %*% frutas   # dimensiones 1x3 * 3x6 = 1x6
 ```
 
-```
-##          2019  2018     2017     2016    2015    2014
-## [1,] 14734.07 11047 13569.01 11671.14 12747.4 12122.1
-```
 
-```r
-&gt; frutas[,'2019']
-```
 
-```
-##  nispero aguacate     kiwi 
-##    205.6  11959.1     57.5
-```
 
-```r
-&gt; sum(frutas[,'2019'] * precio)  # multiplicación de vectores elemento a elemento
-```
+---
+# Matrices: ejercicio 3.3
 
-```
-## [1] 14734.07
-```
+* ¿Qué producciones superan las 200 toneladas? ¿Cuánto suman?
+
+
+* ¿Qué frutas y qué años superan las 200 toneladas?
+
 
 
 
@@ -1311,16 +1255,16 @@ Añado elementos a la lista simplemente definiéndolos:
 
 ```
 ## $breaks
-##  [1] -2.5 -2.0 -1.5 -1.0 -0.5  0.0  0.5  1.0  1.5  2.0  2.5
+## [1] -2.0 -1.5 -1.0 -0.5  0.0  0.5  1.0  1.5  2.0
 ## 
 ## $counts
-##  [1]  1  0  5  8  5  9 11  1  6  4
+## [1]  2  7  5 12 13  3  4  4
 ## 
 ## $density
-##  [1] 0.04 0.00 0.20 0.32 0.20 0.36 0.44 0.04 0.24 0.16
+## [1] 0.08 0.28 0.20 0.48 0.52 0.12 0.16 0.16
 ## 
 ## $mids
-##  [1] -2.25 -1.75 -1.25 -0.75 -0.25  0.25  0.75  1.25  1.75  2.25
+## [1] -1.75 -1.25 -0.75 -0.25  0.25  0.75  1.25  1.75
 ## 
 ## $xname
 ## [1] "rnorm(50)"
@@ -1369,15 +1313,15 @@ Añado elementos a la lista simplemente definiéndolos:
 ```
 
 ---
-# Tablas de datos: data.frame
+# data.frame
 
 
 ```r
 &gt; data.frame(rama="Ciencias",
 +            grado=rep(c("Matemáticas","Física","Biología"),each=2),
 +            sexo=rep(c("mujeres","hombres"),3),   #valdría sexo=c("mujeres","hombres")
-+            num.alum=c(36,49,24,46,54,46) ) -&gt; matricula
-&gt; matricula
++            num.alum=c(36,49,24,46,54,46) ) -&gt; data
+&gt; data
 ```
 
 ```
@@ -1391,7 +1335,7 @@ Añado elementos a la lista simplemente definiéndolos:
 ```
 
 ```r
-&gt; dim(matricula)   #observaciones (filas) y variables (columnas)
+&gt; dim(data)   #observaciones (filas) y variables (columnas)
 ```
 
 ```
@@ -1400,12 +1344,12 @@ Añado elementos a la lista simplemente definiéndolos:
 
 
 ---
-# Tablas de datos: data.frame
+# data.frame
 * Las variables que contienen cadenas de caracteres son consideradas directamente como factores
 
 ```r
 &gt; #Clase y estructura del data.frame
-&gt; class(matricula)
+&gt; class(data)
 ```
 
 ```
@@ -1413,7 +1357,7 @@ Añado elementos a la lista simplemente definiéndolos:
 ```
 
 ```r
-&gt; str(matricula)
+&gt; str(data)
 ```
 
 ```
@@ -1426,25 +1370,15 @@ Añado elementos a la lista simplemente definiéndolos:
 
 
 ---
-# Estructuras de datos: Data.frame
-* Las referencias son como las de las matrices 
+# data.frame
+* Las referencias son como las de las matrices y como las de las listas, con las columnas (variables) como sus elementos
 &lt;center&gt;
-&lt;img src="img/R_data_frame.png" alt="Data frame"/&gt;
+&lt;img src="img/R_data_frame_v2.png" alt="Data frame"/&gt;
 &lt;/center&gt;
-* y como las de las listas, con las columnas (variables) como sus elementos
-
-```r
-&gt; matricula$grado  # como matricula$g, matricula[,2] o matricula[,'grado']
-```
-
-```
-## [1] Matemáticas Matemáticas Física      Física      Biología    Biología   
-## Levels: Biología Física Matemáticas
-```
 
 
 ---
-# Estructuras de datos: Data.frame
+# data.frame
 
 * Se produce error cuando se intenta crear un `data.frame` utilizando vectores de
 diferente longitud que no son divisores de la del más largo
@@ -1457,136 +1391,40 @@ diferente longitud que no son divisores de la del más largo
 ## Error in data.frame(x = 1:3, y = 1:5): arguments imply differing number of rows: 3, 5
 ```
 
-* Comprobar la clase de cada variable del data.frame `matricula`
-
-```r
-&gt; class(matricula$num.alum)
-&gt; class(matricula$....) 
-```
-
 
 
 
 ---
-# data.frame: ejercicio
-&lt;center&gt;
-&lt;img src="img/solar_system3.png" alt="Sistema solar" width="100%" /&gt;
-&lt;/center&gt;
+# data.frame: ejercicio 4
+Leemos los datos de lectura en escolares:
 
 ```r
-&gt; nombre &lt;- c("Mercurio","Venus","Tierra","Marte","Júpiter","Saturno","Urano","Neptuno")
-&gt; tipo &lt;- c("rocoso","rocoso","rocoso","rocoso","gaseoso","gaseoso","gaseoso","gaseoso")
-&gt; diametro &lt;- c(0.382, 0.949, 1, 0.532, 11.209, 9.449, 4.007, 3.883)
-&gt; rotacion &lt;- c(58.64, -243.02, 1, 1.03, 0.41, 0.43, -0.72, 0.67)
-&gt; anillos &lt;- c(FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE)
-&gt; # Crear el data frame:
-&gt; planetas &lt;- data.frame(nombre, tipo, diametro, rotacion, anillos)
-```
-
-
----
-# data.frame: ejercicio
-
-```r
-# Ver la estructura del data.frame
-str(...)
-# Selecciona todos los datos de los últimos tres planetas
-planetas_lejos &lt;- ...
-# Selecciona todos los datos de los planetas más pequeños que la Tierra
-planetas_pq &lt;- ...
-```
-
-
-```r
-&gt; # Diámetro medio de los últimos tres planetas
-&gt; mean(planetas_lejos$... )
-&gt; # Selecciona todos los datos de los planetas con anillos
-&gt; planetas[planetas$...==... ,]
-&gt; subset(planetas, ... = ... )
-&gt; # Ordena los planetas según su diámetro (de mayor a menor)
-&gt; posiciones &lt;- order(...., decreasing = TRUE)
-&gt; planetas_orden &lt;- planetas[...]  
-```
-
-
----
-# data.frame: ejercicio resuelto
-
-```r
-&gt; # Ver la estructura del data.frame
-&gt; str(planetas)
+&gt; lect &lt;- read.table("lectura.csv", header=T, dec=",")
+&gt; lect$curso &lt;- factor(lect$curso, levels=2:7, labels=c(2:6,'1ESO'), ordered=T)
+&gt; lect$dx &lt;- factor(lect$dx, levels=c(0,1), labels=c('sin_dislexia', 'con_dislexia'))
+&gt; head(lect[,1:5])
 ```
 
 ```
-## 'data.frame':	8 obs. of  5 variables:
-##  $ nombre  : Factor w/ 8 levels "Júpiter","Marte",..: 3 8 6 2 1 5 7 4
-##  $ tipo    : Factor w/ 2 levels "gaseoso","rocoso": 2 2 2 2 1 1 1 1
-##  $ diametro: num  0.382 0.949 1 0.532 11.209 ...
-##  $ rotacion: num  58.64 -243.02 1 1.03 0.41 ...
-##  $ anillos : logi  FALSE FALSE FALSE FALSE TRUE TRUE ...
-```
-
-```r
-&gt; # Selecciona todos los datos de los últimos tres planetas
-&gt; planetas_lejos &lt;- planetas[6:8,]
-&gt; # Selecciona todos los datos de los planetas más pequeños que la Tierra
-&gt; planetas_pq &lt;- planetas[planetas$diametro &lt; 1,]
-&gt; # Diámetro medio los últimos tres planetas
-&gt; mean(planetas_lejos$diametro)
-```
-
-```
-## [1] 5.779667
+##   curso edad           dx CF   PH
+## 1     2   87 sin_dislexia 60 40.6
+## 2     2   88 sin_dislexia 52 28.9
+## 3     2   88 sin_dislexia 72 54.6
+## 4     2   90 con_dislexia 71 29.5
+## 5     2   96 con_dislexia 68 47.8
+## 6     2   85 con_dislexia 69 24.1
 ```
 
 ---
-# data.frame: ejercicio resuelto
+# data.frame: ejercicio 4
+1. Mira la estructura del data.frame `lect`
+2. Resume los datos: un primer vistazo numérico
+3. Selecciona todos los datos de los estudiantes de cuarto curso
+4. Media de FLU de los alumnos de tercer curso
+5. FLU de los alumnos disléxicos de segundo y tercer curso
 
-```r
-&gt; # Selecciona todos los datos de los planetas con anillos
-&gt; planetas[planetas$an==T,]
-```
+[Ir a las soluciones](soluciones.html#cuarto)
 
-```
-##    nombre    tipo diametro rotacion anillos
-## 5 Júpiter gaseoso   11.209     0.41    TRUE
-## 6 Saturno gaseoso    9.449     0.43    TRUE
-## 7   Urano gaseoso    4.007    -0.72    TRUE
-## 8 Neptuno gaseoso    3.883     0.67    TRUE
-```
-
-```r
-&gt; subset(planetas, anillos==T, select=-5)
-```
-
-```
-##    nombre    tipo diametro rotacion
-## 5 Júpiter gaseoso   11.209     0.41
-## 6 Saturno gaseoso    9.449     0.43
-## 7   Urano gaseoso    4.007    -0.72
-## 8 Neptuno gaseoso    3.883     0.67
-```
-
----
-# data.frame: ejercicio resuelto
-
-```r
-&gt; # Ordena los planetas según su diámetro (de mayor a menor)
-&gt; posiciones &lt;- order(planetas$d, decreasing = TRUE)
-&gt; planetas[posiciones,]  
-```
-
-```
-##     nombre    tipo diametro rotacion anillos
-## 5  Júpiter gaseoso   11.209     0.41    TRUE
-## 6  Saturno gaseoso    9.449     0.43    TRUE
-## 7    Urano gaseoso    4.007    -0.72    TRUE
-## 8  Neptuno gaseoso    3.883     0.67    TRUE
-## 3   Tierra  rocoso    1.000     1.00   FALSE
-## 2    Venus  rocoso    0.949  -243.02   FALSE
-## 4    Marte  rocoso    0.532     1.03   FALSE
-## 1 Mercurio  rocoso    0.382    58.64   FALSE
-```
 
 
 
@@ -1758,7 +1596,7 @@ en realidad devuelve muchos más datos
 +      paste('FLU=',round(f4e$coef[1],2),'+',round(f4e$co[2],2),'*edad'))
 ```
 
-![](R_curso03_files/figure-html/unnamed-chunk-70-1.png)&lt;!-- --&gt;
+![](R_curso03_files/figure-html/unnamed-chunk-66-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -1873,7 +1711,7 @@ El p-valor grande nos indica que el modelo más complicado (model 2: FLU = a + b
 &gt; abline(f4e0, col='orange'); text(120,830,'FLU=b*edad',col='orange')
 ```
 
-![](R_curso03_files/figure-html/unnamed-chunk-76-1.png)&lt;!-- --&gt;
+![](R_curso03_files/figure-html/unnamed-chunk-72-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -1885,7 +1723,7 @@ Para comprobar si se dan las hipótesis del modelo lineal usamos `plot`
 &gt; plot(f4e, which=1:6)
 ```
 
-![](R_curso03_files/figure-html/unnamed-chunk-77-1.png)&lt;!-- --&gt;
+![](R_curso03_files/figure-html/unnamed-chunk-73-1.png)&lt;!-- --&gt;
 
 
 
@@ -1930,7 +1768,7 @@ Añadamos una nueva variable, ahora será cualitativa (`fdx`), que nos explique 
 &gt; abline(a=f4ed0$coef[3], b=f4ed0$coef[1], col='red')  #dx=1
 ```
 
-![](R_curso03_files/figure-html/unnamed-chunk-80-1.png)&lt;!-- --&gt;
+![](R_curso03_files/figure-html/unnamed-chunk-76-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -1939,7 +1777,7 @@ Añadamos una nueva variable, ahora será cualitativa (`fdx`), que nos explique 
 &gt; plot(f4ed0)
 ```
 
-![](R_curso03_files/figure-html/unnamed-chunk-81-1.png)&lt;!-- --&gt;
+![](R_curso03_files/figure-html/unnamed-chunk-77-1.png)&lt;!-- --&gt;
 
 
 
@@ -1953,7 +1791,7 @@ Añadamos una nueva variable, ahora será cualitativa (`fdx`), que nos explique 
 &gt; plot(f4ed0$res ~ factor(f4ed0$model[,3]))  #residuos frente a dix
 ```
 
-![](R_curso03_files/figure-html/unnamed-chunk-83-1.png)&lt;!-- --&gt;
+![](R_curso03_files/figure-html/unnamed-chunk-79-1.png)&lt;!-- --&gt;
 
 
 
